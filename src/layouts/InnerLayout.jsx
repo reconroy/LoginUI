@@ -8,12 +8,12 @@ import { Outlet } from 'react-router-dom';
 import useSidebarStore from '../store/useSidebarStore';
 
 const InnerLayout = () => {
-  const { isPrimarySidebarOpen, isSecondarySidebarOpen } = useSidebarStore();
+  const { isFooterVisible } = useSidebarStore();
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-100">
+    <div className="flex flex-col h-screen bg-gray-100 overflow-hidden">
       {/* Navbar at the top */}
-      <Navbar />
+      <Navbar className="flex-shrink-0" />
 
       {/* Main content area with sidebars */}
       <div className="flex flex-1 overflow-hidden">
@@ -21,13 +21,15 @@ const InnerLayout = () => {
         <PrimarySideBar />
 
         {/* Main content */}
-        <main className={`flex-1 transition-all duration-300 overflow-auto p-4 ${isPrimarySidebarOpen ? 'ml-0' : 'ml-0'} ${isSecondarySidebarOpen ? 'mr-0' : 'mr-0'}`}>
-          {/* Breadcrumb navigation */}
-          <Breadcrumb />
+        <main className="flex-1 flex flex-col overflow-hidden">
+          <div className="p-4 flex-1 overflow-auto">
+            {/* Breadcrumb navigation */}
+            <Breadcrumb />
 
-          {/* Page content */}
-          <div className="bg-white p-6 rounded-lg shadow-md mt-4">
-            <Outlet />
+            {/* Page content */}
+            <div className="bg-white p-6 rounded-lg shadow-md mt-4 mb-4">
+              <Outlet />
+            </div>
           </div>
         </main>
 
@@ -35,8 +37,8 @@ const InnerLayout = () => {
         <SecondarySideBar />
       </div>
 
-      {/* Footer */}
-      <Footer />
+      {/* Footer - conditionally rendered */}
+      {isFooterVisible && <Footer className="flex-shrink-0" />}
     </div>
   );
 };

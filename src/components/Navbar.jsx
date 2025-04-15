@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import useSidebarStore from '../store/useSidebarStore';
 
-const Navbar = () => {
+const Navbar = ({ className = '' }) => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const {
@@ -19,7 +19,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-blue-600 text-white shadow-md">
+    <nav className={`bg-blue-600 text-white shadow-md ${className}`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Left side - Logo and sidebar toggle */}

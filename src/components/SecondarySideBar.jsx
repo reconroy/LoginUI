@@ -53,7 +53,7 @@ const SecondarySideBar = () => {
 
   return (
     <aside
-      className={`bg-gray-50 border-l border-gray-200 transition-all duration-300 ease-in-out ${isSecondarySidebarOpen ? 'w-80' : 'w-0'} overflow-hidden`}
+      className={`bg-gray-50 border-l border-gray-200 transition-all duration-300 ease-in-out ${isSecondarySidebarOpen ? 'w-80' : 'w-0'} overflow-hidden h-full`}
     >
       <div className="h-full flex flex-col">
         {/* Sidebar header */}

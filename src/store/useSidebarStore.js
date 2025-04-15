@@ -8,26 +8,37 @@ const useSidebarStore = create(
       // Initial state
       isPrimarySidebarOpen: true,
       isSecondarySidebarOpen: true,
-      
+      isFooterVisible: true,
+
       // Actions
-      togglePrimarySidebar: () => 
-        set((state) => ({ 
-          isPrimarySidebarOpen: !state.isPrimarySidebarOpen 
+      togglePrimarySidebar: () =>
+        set((state) => ({
+          isPrimarySidebarOpen: !state.isPrimarySidebarOpen
         })),
-        
-      toggleSecondarySidebar: () => 
-        set((state) => ({ 
-          isSecondarySidebarOpen: !state.isSecondarySidebarOpen 
+
+      toggleSecondarySidebar: () =>
+        set((state) => ({
+          isSecondarySidebarOpen: !state.isSecondarySidebarOpen
         })),
-        
-      setPrimarySidebar: (isOpen) => 
-        set(() => ({ 
-          isPrimarySidebarOpen: isOpen 
+
+      toggleFooter: () =>
+        set((state) => ({
+          isFooterVisible: !state.isFooterVisible
         })),
-        
-      setSecondarySidebar: (isOpen) => 
-        set(() => ({ 
-          isSecondarySidebarOpen: isOpen 
+
+      setPrimarySidebar: (isOpen) =>
+        set(() => ({
+          isPrimarySidebarOpen: isOpen
+        })),
+
+      setSecondarySidebar: (isOpen) =>
+        set(() => ({
+          isSecondarySidebarOpen: isOpen
+        })),
+
+      setFooterVisibility: (isVisible) =>
+        set(() => ({
+          isFooterVisible: isVisible
         })),
     }),
     {

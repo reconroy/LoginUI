@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import useSidebarStore from '../store/useSidebarStore';
 
 const Settings = () => {
-  const { 
-    isPrimarySidebarOpen, 
-    isSecondarySidebarOpen, 
-    setPrimarySidebar, 
-    setSecondarySidebar 
+  const {
+    isPrimarySidebarOpen,
+    isSecondarySidebarOpen,
+    isFooterVisible,
+    setPrimarySidebar,
+    setSecondarySidebar,
+    setFooterVisibility
   } = useSidebarStore();
-  
+
   const [formData, setFormData] = useState({
     notifications: true,
     marketing: false,
@@ -26,12 +28,12 @@ const Settings = () => {
   return (
     <div>
       <h1 className="text-2xl font-bold mb-6">Settings</h1>
-      
+
       <div className="space-y-8">
         {/* Layout Settings */}
         <div className="bg-white p-6 rounded-lg shadow-md">
           <h2 className="text-lg font-semibold mb-4">Layout Preferences</h2>
-          
+
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div>
@@ -61,7 +63,7 @@ const Settings = () => {
                 </label>
               </div>
             </div>
-            
+
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="font-medium">Secondary Sidebar</h3>
@@ -90,13 +92,42 @@ const Settings = () => {
                 </label>
               </div>
             </div>
+
+            <div className="flex items-center justify-between mt-4">
+              <div>
+                <h3 className="font-medium">Footer</h3>
+                <p className="text-sm text-gray-500">Show or hide the footer</p>
+              </div>
+              <div className="relative inline-block w-12 h-6 transition duration-200 ease-in-out rounded-full">
+                <input
+                  type="checkbox"
+                  id="footer-visibility"
+                  name="footer-visibility"
+                  className="absolute w-6 h-6 opacity-0"
+                  checked={isFooterVisible}
+                  onChange={() => setFooterVisibility(!isFooterVisible)}
+                />
+                <label
+                  htmlFor="footer-visibility"
+                  className={`block w-full h-full rounded-full cursor-pointer ${
+                    isFooterVisible ? 'bg-blue-600' : 'bg-gray-300'
+                  }`}
+                >
+                  <span
+                    className={`absolute left-0 w-6 h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full ${
+                      isFooterVisible ? 'translate-x-6' : 'translate-x-0'
+                    }`}
+                  />
+                </label>
+              </div>
+            </div>
           </div>
         </div>
-        
+
         {/* Notification Settings */}
         <div className="bg-white p-6 rounded-lg shadow-md">
           <h2 className="text-lg font-semibold mb-4">Notification Preferences</h2>
-          
+
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div>
@@ -126,7 +157,7 @@ const Settings = () => {
                 </label>
               </div>
             </div>
-            
+
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="font-medium">Marketing Emails</h3>
@@ -155,7 +186,7 @@ const Settings = () => {
                 </label>
               </div>
             </div>
-            
+
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="font-medium">Product Updates</h3>
@@ -186,7 +217,7 @@ const Settings = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Save Button */}
         <div className="flex justify-end">
           <button className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors">

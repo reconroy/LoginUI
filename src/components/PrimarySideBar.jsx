@@ -61,7 +61,7 @@ const PrimarySideBar = () => {
 
   return (
     <aside
-      className={`bg-gray-800 text-white transition-all duration-300 ease-in-out ${isPrimarySidebarOpen ? 'w-64' : 'w-0 md:w-16'} overflow-hidden`}
+      className={`bg-gray-800 text-white transition-all duration-300 ease-in-out ${isPrimarySidebarOpen ? 'w-64' : 'w-0 md:w-16'} overflow-hidden h-full`}
     >
       <div className="h-full flex flex-col">
         {/* Sidebar header */}
