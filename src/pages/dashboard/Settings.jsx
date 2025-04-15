@@ -13,7 +13,7 @@ const Settings = () => {
     setFooterVisibility
   } = useSidebarStore();
 
-  const { isDarkMode, toggleTheme } = useThemeStore();
+  const { isDarkMode } = useThemeStore();
 
   const [formData, setFormData] = useState({
     notifications: true,
@@ -84,7 +84,7 @@ const Settings = () => {
               </div>
             </div>
 
-            <div className="flex items-center justify-between py-1 lg:block hidden">
+            <div className="flex items-center justify-between py-1 lg:flex hidden">
               <div className="pr-4">
                 <h3 className="text-sm sm:text-base font-medium">Secondary Sidebar</h3>
                 <p className={`text-xs sm:text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Show or hide the right sidebar</p>
