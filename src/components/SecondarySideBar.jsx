@@ -1,5 +1,5 @@
 import React from 'react';
-import useSidebarStore from '../store/useSidebarStore';
+import { useSidebarStore } from '../store';
 
 const SecondarySideBar = () => {
   const { isSecondarySidebarOpen } = useSidebarStore();

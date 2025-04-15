@@ -10,12 +10,17 @@ import ProtectedRoutes from './routes/ProtectedRoutes'
 
 // Pages
 import Home from './pages/Home'
-import Dashboard from './pages/Dashboard'
-import Login from './pages/Login'
-import Register from './pages/Register'
-import Reports from './pages/Reports'
-import Settings from './pages/Settings'
 import NotFound from './pages/NotFound'
+
+// Auth Pages
+import Login from './pages/auth/Login.jsx'
+import Register from './pages/auth/Register.jsx'
+import ForgotPassword from './pages/auth/ForgotPassword.jsx'
+
+// Dashboard Pages
+import Dashboard from './pages/dashboard/Dashboard.jsx'
+import Reports from './pages/dashboard/Reports.jsx'
+import Settings from './pages/dashboard/Settings.jsx'
 
 function App() {
   return (
@@ -26,6 +31,7 @@ function App() {
           <Route element={<OuterLayout />}>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/" element={<Home />} />
           </Route>
 

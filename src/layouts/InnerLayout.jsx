@@ -5,7 +5,7 @@ import PrimarySideBar from '../components/PrimarySideBar';
 import SecondarySideBar from '../components/SecondarySideBar';
 import Breadcrumb from '../components/Breadcrumb';
 import { Outlet } from 'react-router-dom';
-import useSidebarStore from '../store/useSidebarStore';
+import { useSidebarStore } from '../store';
 
 const InnerLayout = () => {
   const { isFooterVisible } = useSidebarStore();

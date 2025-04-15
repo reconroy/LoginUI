@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import useSidebarStore from '../store/useSidebarStore';
+import { useSidebarStore } from '../store';
 
 const Navbar = ({ className = '' }) => {
   const { user, logout } = useAuth();
