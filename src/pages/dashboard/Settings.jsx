@@ -58,7 +58,7 @@ const Settings = () => {
                 <h3 className="text-sm sm:text-base font-medium">Primary Sidebar</h3>
                 <p className={`text-xs sm:text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Show or hide the left sidebar</p>
               </div>
-              <div className="relative inline-block w-10 sm:w-12 h-5 sm:h-6 transition duration-200 ease-in-out rounded-full flex-shrink-0">
+              <div className="relative inline-block w-10 sm:w-12 h-5 sm:h-6 transition duration-200 ease-in-out rounded-full flex-shrink-0 shadow-sm">
                 <input
                   type="checkbox"
                   id="primary-sidebar"
@@ -69,14 +69,14 @@ const Settings = () => {
                 />
                 <label
                   htmlFor="primary-sidebar"
-                  className={`block w-full h-full rounded-full cursor-pointer ${
+                  className={`block w-full h-full rounded-full cursor-pointer border ${
                     isPrimarySidebarOpen
-                      ? 'bg-blue-600 dark:bg-blue-500'
-                      : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'
+                      ? 'bg-blue-600 dark:bg-blue-500 border-blue-700'
+                      : isDarkMode ? 'bg-gray-600 border-gray-700' : 'bg-gray-200 border-gray-300'
                   }`}
                 >
                   <span
-                    className={`absolute left-0 w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full ${
+                    className={`absolute left-0 w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full shadow ${
                       isPrimarySidebarOpen ? 'translate-x-5 sm:translate-x-6' : 'translate-x-0'
                     }`}
                   />
@@ -89,7 +89,7 @@ const Settings = () => {
                 <h3 className="text-sm sm:text-base font-medium">Secondary Sidebar</h3>
                 <p className={`text-xs sm:text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Show or hide the right sidebar</p>
               </div>
-              <div className="relative inline-block w-10 sm:w-12 h-5 sm:h-6 transition duration-200 ease-in-out rounded-full flex-shrink-0">
+              <div className="relative inline-block w-10 sm:w-12 h-5 sm:h-6 transition duration-200 ease-in-out rounded-full flex-shrink-0 shadow-sm">
                 <input
                   type="checkbox"
                   id="secondary-sidebar"
@@ -100,14 +100,14 @@ const Settings = () => {
                 />
                 <label
                   htmlFor="secondary-sidebar"
-                  className={`block w-full h-full rounded-full cursor-pointer ${
+                  className={`block w-full h-full rounded-full cursor-pointer border ${
                     isSecondarySidebarOpen
-                      ? 'bg-blue-600 dark:bg-blue-500'
-                      : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'
+                      ? 'bg-blue-600 dark:bg-blue-500 border-blue-700'
+                      : isDarkMode ? 'bg-gray-600 border-gray-700' : 'bg-gray-200 border-gray-300'
                   }`}
                 >
                   <span
-                    className={`absolute left-0 w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full ${
+                    className={`absolute left-0 w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full shadow ${
                       isSecondarySidebarOpen ? 'translate-x-5 sm:translate-x-6' : 'translate-x-0'
                     }`}
                   />
@@ -116,11 +116,11 @@ const Settings = () => {
             </div>
 
             <div className="flex items-center justify-between mt-4">
-              <div>
-                <h3 className="font-medium">Footer</h3>
-                <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Show or hide the footer</p>
+              <div className="pr-4">
+                <h3 className="text-sm sm:text-base font-medium">Footer</h3>
+                <p className={`text-xs sm:text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Show or hide the footer</p>
               </div>
-              <div className="relative inline-block w-12 h-6 transition duration-200 ease-in-out rounded-full">
+              <div className="relative inline-block w-10 sm:w-12 h-5 sm:h-6 transition duration-200 ease-in-out rounded-full flex-shrink-0 shadow-sm">
                 <input
                   type="checkbox"
                   id="footer-visibility"
@@ -131,14 +131,14 @@ const Settings = () => {
                 />
                 <label
                   htmlFor="footer-visibility"
-                  className={`block w-full h-full rounded-full cursor-pointer ${
+                  className={`block w-full h-full rounded-full cursor-pointer border ${
                     isFooterVisible
-                      ? 'bg-blue-600 dark:bg-blue-500'
-                      : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'
+                      ? 'bg-blue-600 dark:bg-blue-500 border-blue-700'
+                      : isDarkMode ? 'bg-gray-600 border-gray-700' : 'bg-gray-200 border-gray-300'
                   }`}
                 >
                   <span
-                    className={`absolute left-0 w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full ${
+                    className={`absolute left-0 w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full shadow ${
                       isFooterVisible ? 'translate-x-5 sm:translate-x-6' : 'translate-x-0'
                     }`}
                   />
@@ -158,7 +158,7 @@ const Settings = () => {
                 <h3 className="text-sm sm:text-base font-medium">Email Notifications</h3>
                 <p className={`text-xs sm:text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Receive notifications via email</p>
               </div>
-              <div className="relative inline-block w-10 sm:w-12 h-5 sm:h-6 transition duration-200 ease-in-out rounded-full flex-shrink-0">
+              <div className="relative inline-block w-10 sm:w-12 h-5 sm:h-6 transition duration-200 ease-in-out rounded-full flex-shrink-0 shadow-sm">
                 <input
                   type="checkbox"
                   id="notifications"
@@ -169,14 +169,14 @@ const Settings = () => {
                 />
                 <label
                   htmlFor="notifications"
-                  className={`block w-full h-full rounded-full cursor-pointer ${
+                  className={`block w-full h-full rounded-full cursor-pointer border ${
                     formData.notifications
-                      ? 'bg-blue-600 dark:bg-blue-500'
-                      : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'
+                      ? 'bg-blue-600 dark:bg-blue-500 border-blue-700'
+                      : isDarkMode ? 'bg-gray-600 border-gray-700' : 'bg-gray-200 border-gray-300'
                   }`}
                 >
                   <span
-                    className={`absolute left-0 w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full ${
+                    className={`absolute left-0 w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full shadow ${
                       formData.notifications ? 'translate-x-5 sm:translate-x-6' : 'translate-x-0'
                     }`}
                   />
@@ -189,7 +189,7 @@ const Settings = () => {
                 <h3 className="text-sm sm:text-base font-medium">Marketing Emails</h3>
                 <p className={`text-xs sm:text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Receive marketing and promotional emails</p>
               </div>
-              <div className="relative inline-block w-10 sm:w-12 h-5 sm:h-6 transition duration-200 ease-in-out rounded-full flex-shrink-0">
+              <div className="relative inline-block w-10 sm:w-12 h-5 sm:h-6 transition duration-200 ease-in-out rounded-full flex-shrink-0 shadow-sm">
                 <input
                   type="checkbox"
                   id="marketing"
@@ -200,14 +200,14 @@ const Settings = () => {
                 />
                 <label
                   htmlFor="marketing"
-                  className={`block w-full h-full rounded-full cursor-pointer ${
+                  className={`block w-full h-full rounded-full cursor-pointer border ${
                     formData.marketing
-                      ? 'bg-blue-600 dark:bg-blue-500'
-                      : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'
+                      ? 'bg-blue-600 dark:bg-blue-500 border-blue-700'
+                      : isDarkMode ? 'bg-gray-600 border-gray-700' : 'bg-gray-200 border-gray-300'
                   }`}
                 >
                   <span
-                    className={`absolute left-0 w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full ${
+                    className={`absolute left-0 w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full shadow ${
                       formData.marketing ? 'translate-x-5 sm:translate-x-6' : 'translate-x-0'
                     }`}
                   />
@@ -220,7 +220,7 @@ const Settings = () => {
                 <h3 className="text-sm sm:text-base font-medium">Product Updates</h3>
                 <p className={`text-xs sm:text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Receive notifications about product updates</p>
               </div>
-              <div className="relative inline-block w-10 sm:w-12 h-5 sm:h-6 transition duration-200 ease-in-out rounded-full flex-shrink-0">
+              <div className="relative inline-block w-10 sm:w-12 h-5 sm:h-6 transition duration-200 ease-in-out rounded-full flex-shrink-0 shadow-sm">
                 <input
                   type="checkbox"
                   id="updates"
@@ -231,14 +231,14 @@ const Settings = () => {
                 />
                 <label
                   htmlFor="updates"
-                  className={`block w-full h-full rounded-full cursor-pointer ${
+                  className={`block w-full h-full rounded-full cursor-pointer border ${
                     formData.updates
-                      ? 'bg-blue-600 dark:bg-blue-500'
-                      : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'
+                      ? 'bg-blue-600 dark:bg-blue-500 border-blue-700'
+                      : isDarkMode ? 'bg-gray-600 border-gray-700' : 'bg-gray-200 border-gray-300'
                   }`}
                 >
                   <span
-                    className={`absolute left-0 w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full ${
+                    className={`absolute left-0 w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full shadow ${
                       formData.updates ? 'translate-x-5 sm:translate-x-6' : 'translate-x-0'
                     }`}
                   />
