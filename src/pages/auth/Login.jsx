@@ -67,7 +67,7 @@ const Login = () => {
   };
 
   return (
-    <div className="animate-fadeIn">
+    <div className="relative z-20">
       <h1 className={`text-2xl font-bold mb-6 text-center ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
         <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600">Sign In</span>
       </h1>

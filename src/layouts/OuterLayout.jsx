@@ -56,7 +56,7 @@ const OuterLayout = () => {
           </div>
 
           {/* Right side panel - full width on small screens */}
-          <div className="w-full md:w-2/3 lg:w-1/2">
+          <div className="w-full md:w-2/3 lg:w-1/2 z-10">
             <div className={`rounded-lg shadow-xl p-8 backdrop-blur-sm transition-all duration-300 ${isDarkMode ? 'bg-gray-800/90 text-white border border-gray-700' : 'bg-white/90 text-gray-800 border border-gray-200'}`}>
               {/* Theme toggle for small screens */}
               <div className="flex justify-end mb-4 lg:hidden">
