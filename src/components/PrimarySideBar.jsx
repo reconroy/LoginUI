@@ -17,6 +17,11 @@ const PrimarySideBar = () => {
 
   // Function to check if a path is active
   const isActive = (path) => {
+    // Exact match for dashboard home
+    if (path === '/dashboard') {
+      return location.pathname === '/dashboard';
+    }
+    // For other routes, check if the current path matches or is a sub-path
     return location.pathname === path || location.pathname.startsWith(`${path}/`);
   };
 
