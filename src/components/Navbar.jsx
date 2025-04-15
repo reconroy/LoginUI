@@ -103,13 +103,13 @@ const Navbar = ({ className = '' }) => {
               aria-label="Toggle secondary sidebar"
             >
               <svg
-                className={`h-5 w-5 sm:h-6 sm:w-6 transition-transform duration-200 ${isSecondarySidebarOpen ? '' : 'transform rotate-180'}`}
+                className={`h-5 w-5 sm:h-6 sm:w-6 transition-colors duration-200 ${isSecondarySidebarOpen ? 'text-blue-400' : 'text-white'}`}
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h8m-8 6h16" />
               </svg>
             </button>
           </div>
