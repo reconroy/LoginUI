@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useSidebarStore } from '../store';
 
 const PrimarySideBar = () => {
-  const { isPrimarySidebarOpen } = useSidebarStore();
+  const { isPrimarySidebarOpen, isFooterVisible } = useSidebarStore();
   const location = useLocation();
 
   // Navigation items
@@ -93,12 +93,14 @@ const PrimarySideBar = () => {
           </ul>
         </nav>
 
-        {/* Sidebar footer */}
-        <div className="p-4 border-t border-gray-800">
-          <div className={`text-sm text-gray-400 ${isPrimarySidebarOpen ? 'block' : 'hidden'}`}>
-            <p>© {new Date().getFullYear()} Your Company</p>
+        {/* Sidebar footer - only shown when main footer is hidden */}
+        {!isFooterVisible && (
+          <div className="p-4 border-t border-gray-800">
+            <div className={`text-sm text-gray-400 ${isPrimarySidebarOpen ? 'block' : 'hidden'}`}>
+              <p>© {new Date().getFullYear()} Your Company</p>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </aside>
   );
