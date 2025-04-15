@@ -91,8 +91,8 @@ const Register = () => {
   };
 
   return (
-    <div className="animate-fadeIn">
-      <h1 className={`text-2xl font-bold mb-6 text-center ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
+    <div className="relative z-20 w-full max-w-md mx-auto">
+      <h1 className={`text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
         <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600">Create an Account</span>
       </h1>
 
@@ -102,7 +102,7 @@ const Register = () => {
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
         <div className="group">
           <label htmlFor="name" className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
             Full Name

@@ -14,10 +14,10 @@ const OuterLayout = () => {
       </div>
 
       {/* Main content area with left text and right panel */}
-      <div className="container max-w-6xl mx-auto py-12 px-4 relative">
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-8">
-          {/* Left side text - hidden on small screens */}
-          <div className="w-full lg:w-1/2 hidden md:block">
+      <div className="container max-w-6xl mx-auto py-6 sm:py-12 px-4 relative">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-8">
+          {/* Left side text - hidden on small and medium screens */}
+          <div className="w-full lg:w-1/2 hidden lg:block">
             <div className="pr-8">
               <h1 className={`text-4xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-gray-800'} transition-colors duration-300`}>
                 Welcome to Our <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600">Futuristic Platform</span>
@@ -55,9 +55,9 @@ const OuterLayout = () => {
             </div>
           </div>
 
-          {/* Right side panel - full width on small screens */}
-          <div className="w-full md:w-2/3 lg:w-1/2 z-10">
-            <div className={`rounded-lg shadow-xl p-8 backdrop-blur-sm transition-all duration-300 ${isDarkMode ? 'bg-gray-800/90 text-white border border-gray-700' : 'bg-white/90 text-gray-800 border border-gray-200'}`}>
+          {/* Right side panel - full width on small and medium screens */}
+          <div className="w-full lg:w-1/2 z-10">
+            <div className={`rounded-lg shadow-xl p-4 sm:p-6 md:p-8 backdrop-blur-sm transition-all duration-300 ${isDarkMode ? 'bg-gray-800/90 text-white border border-gray-700' : 'bg-white/90 text-gray-800 border border-gray-200'}`}>
               {/* Theme toggle for small screens */}
               <div className="flex justify-end mb-4 lg:hidden">
                 <ThemeToggle />
