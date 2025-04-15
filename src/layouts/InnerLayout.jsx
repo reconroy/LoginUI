@@ -12,7 +12,7 @@ const InnerLayout = () => {
   const { isDarkMode } = useThemeStore();
 
   return (
-    <div className={`flex flex-col h-screen overflow-hidden ${isDarkMode ? 'bg-gray-800' : 'bg-gray-100'} transition-colors duration-300`}>
+    <div className={`flex flex-col h-screen overflow-hidden bg-gray-900 transition-colors duration-300`}>
       {/* Navbar at the top - permanently dark */}
       <Navbar className="flex-shrink-0" />
 
@@ -30,7 +30,7 @@ const InnerLayout = () => {
         <PrimarySideBar />
 
         {/* Main content - with left padding on medium screens and up */}
-        <main className="flex-1 flex flex-col overflow-hidden md:ml-16 w-full">
+        <main className="flex-1 flex flex-col overflow-hidden w-full">
           <div className={`p-4 flex-1 overflow-auto ${isDarkMode ? 'bg-gray-700' : 'bg-gray-50'} transition-colors duration-300`}>
             {/* Breadcrumb navigation */}
             <div className="mb-4">
