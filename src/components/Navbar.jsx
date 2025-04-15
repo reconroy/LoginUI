@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { useSidebarStore, useThemeStore } from '../store';
+import { useSidebarStore } from '../store';
 import ThemeToggle from './common/ThemeToggle';
 
 const Navbar = ({ className = '' }) => {
@@ -13,7 +13,7 @@ const Navbar = ({ className = '' }) => {
     togglePrimarySidebar,
     toggleSecondarySidebar
   } = useSidebarStore();
-  const { isDarkMode } = useThemeStore();
+  // We're not using isDarkMode here as the navbar is permanently dark
 
   const handleLogout = () => {
     logout();
@@ -79,12 +79,16 @@ const Navbar = ({ className = '' }) => {
               </div>
             </div>
 
-            {/* Logout button */}
+            {/* Logout button with icon */}
             <button
               onClick={handleLogout}
-              className="ml-4 px-3 py-2 rounded-md hover:bg-gray-800 transition-colors"
+              className="ml-4 p-2 rounded-md hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-white"
+              aria-label="Logout"
+              title="Logout"
             >
-              Logout
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+              </svg>
             </button>
 
             {/* Theme toggle */}
