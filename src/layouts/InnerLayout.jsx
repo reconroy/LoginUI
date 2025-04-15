@@ -31,7 +31,7 @@ const InnerLayout = () => {
 
         {/* Main content - with left padding on medium screens and up */}
         <main className="flex-1 flex flex-col overflow-hidden w-full">
-          <div className={`p-4 flex-1 overflow-auto ${isDarkMode ? 'bg-gray-700' : 'bg-gray-50'} transition-colors duration-300`}>
+          <div className={`p-4 flex-1 overflow-auto ${isDarkMode ? 'bg-gray-700' : 'bg-gradient-to-br from-blue-50 to-indigo-200'} transition-colors duration-300`}>
             {/* Breadcrumb navigation */}
             <div className="mb-4">
               <Breadcrumb />

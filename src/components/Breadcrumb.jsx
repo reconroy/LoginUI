@@ -18,7 +18,7 @@ const Breadcrumb = () => {
   };
 
   return (
-    <div className={`${isDarkMode ? 'bg-gray-800' : 'bg-gray-100'} p-2 mb-4 rounded-md transition-colors duration-300`}>
+    <div className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} p-2 mb-4 rounded-md transition-colors duration-300`}>
       <nav className="text-sm" aria-label="Breadcrumb">
         <ol className="list-none p-0 inline-flex">
           <li className="flex items-center">
