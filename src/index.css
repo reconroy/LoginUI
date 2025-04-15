@@ -1,3 +1,48 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #3B82F6;
+    --color-secondary: #10B981;
+    --color-accent: #8B5CF6;
+    --color-background: #F3F4F6;
+    --color-foreground: #1F2937;
+  }
+
+  .dark {
+    --color-primary: #60A5FA;
+    --color-secondary: #34D399;
+    --color-accent: #A78BFA;
+    --color-background: #111827;
+    --color-foreground: #F9FAFB;
+  }
+
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+  }
+}
+
+/* Page transition animations */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 300ms, transform 300ms;
+}
