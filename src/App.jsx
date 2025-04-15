@@ -1,6 +1,7 @@
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext'
+import ThemeProvider from './components/common/ThemeProvider'
 
 // Layouts
 import OuterLayout from './layouts/OuterLayout'
@@ -24,9 +25,10 @@ import Settings from './pages/dashboard/Settings.jsx'
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <Routes>
+    <ThemeProvider>
+      <AuthProvider>
+        <Router>
+          <Routes>
           {/* Public routes with OuterLayout */}
           <Route element={<OuterLayout />}>
             <Route path="/login" element={<Login />} />
@@ -45,9 +47,10 @@ function App() {
 
           {/* 404 route */}
           <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Router>
-    </AuthProvider>
+          </Routes>
+        </Router>
+      </AuthProvider>
+    </ThemeProvider>
   )
 }
 
