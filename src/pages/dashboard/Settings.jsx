@@ -53,12 +53,12 @@ const Settings = () => {
           <h2 className="text-base sm:text-lg font-semibold my-3 sm:my-4">Layout Preferences</h2>
 
           <div className="space-y-4">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between py-1">
               <div className="pr-4">
                 <h3 className="text-sm sm:text-base font-medium">Primary Sidebar</h3>
                 <p className={`text-xs sm:text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Show or hide the left sidebar</p>
               </div>
-              <div className="relative inline-block w-10 sm:w-12 h-5 sm:h-6 transition duration-200 ease-in-out rounded-full flex-shrink-0 shadow-sm">
+              <div className="relative inline-block w-10 sm:w-12 h-5 sm:h-6 transition duration-200 ease-in-out rounded-full flex-shrink-0 shadow-sm self-center">
                 <input
                   type="checkbox"
                   id="primary-sidebar"
@@ -76,7 +76,7 @@ const Settings = () => {
                   }`}
                 >
                   <span
-                    className={`absolute left-0 w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full shadow ${
+                    className={`absolute top-0 bottom-0 my-auto left-0 w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full shadow ${
                       isPrimarySidebarOpen ? 'translate-x-5 sm:translate-x-6' : 'translate-x-0'
                     }`}
                   />
@@ -84,12 +84,12 @@ const Settings = () => {
               </div>
             </div>
 
-            <div className="flex items-center justify-between lg:block hidden">
+            <div className="flex items-center justify-between py-1 lg:block hidden">
               <div className="pr-4">
                 <h3 className="text-sm sm:text-base font-medium">Secondary Sidebar</h3>
                 <p className={`text-xs sm:text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Show or hide the right sidebar</p>
               </div>
-              <div className="relative inline-block w-10 sm:w-12 h-5 sm:h-6 transition duration-200 ease-in-out rounded-full flex-shrink-0 shadow-sm">
+              <div className="relative inline-block w-10 sm:w-12 h-5 sm:h-6 transition duration-200 ease-in-out rounded-full flex-shrink-0 shadow-sm self-center">
                 <input
                   type="checkbox"
                   id="secondary-sidebar"
@@ -107,7 +107,7 @@ const Settings = () => {
                   }`}
                 >
                   <span
-                    className={`absolute left-0 w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full shadow ${
+                    className={`absolute top-0 bottom-0 my-auto left-0 w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full shadow ${
                       isSecondarySidebarOpen ? 'translate-x-5 sm:translate-x-6' : 'translate-x-0'
                     }`}
                   />
@@ -115,12 +115,12 @@ const Settings = () => {
               </div>
             </div>
 
-            <div className="flex items-center justify-between mt-4">
+            <div className="flex items-center justify-between py-1 mt-4">
               <div className="pr-4">
                 <h3 className="text-sm sm:text-base font-medium">Footer</h3>
                 <p className={`text-xs sm:text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Show or hide the footer</p>
               </div>
-              <div className="relative inline-block w-10 sm:w-12 h-5 sm:h-6 transition duration-200 ease-in-out rounded-full flex-shrink-0 shadow-sm">
+              <div className="relative inline-block w-10 sm:w-12 h-5 sm:h-6 transition duration-200 ease-in-out rounded-full flex-shrink-0 shadow-sm self-center">
                 <input
                   type="checkbox"
                   id="footer-visibility"
@@ -138,7 +138,7 @@ const Settings = () => {
                   }`}
                 >
                   <span
-                    className={`absolute left-0 w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full shadow ${
+                    className={`absolute top-0 bottom-0 my-auto left-0 w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full shadow ${
                       isFooterVisible ? 'translate-x-5 sm:translate-x-6' : 'translate-x-0'
                     }`}
                   />
@@ -153,12 +153,12 @@ const Settings = () => {
           <h2 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Notification Preferences</h2>
 
           <div className="space-y-4">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between py-1">
               <div className="pr-4">
                 <h3 className="text-sm sm:text-base font-medium">Email Notifications</h3>
                 <p className={`text-xs sm:text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Receive notifications via email</p>
               </div>
-              <div className="relative inline-block w-10 sm:w-12 h-5 sm:h-6 transition duration-200 ease-in-out rounded-full flex-shrink-0 shadow-sm">
+              <div className="relative inline-block w-10 sm:w-12 h-5 sm:h-6 transition duration-200 ease-in-out rounded-full flex-shrink-0 shadow-sm self-center">
                 <input
                   type="checkbox"
                   id="notifications"
@@ -176,7 +176,7 @@ const Settings = () => {
                   }`}
                 >
                   <span
-                    className={`absolute left-0 w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full shadow ${
+                    className={`absolute top-0 bottom-0 my-auto left-0 w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full shadow ${
                       formData.notifications ? 'translate-x-5 sm:translate-x-6' : 'translate-x-0'
                     }`}
                   />
@@ -184,12 +184,12 @@ const Settings = () => {
               </div>
             </div>
 
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between py-1">
               <div className="pr-4">
                 <h3 className="text-sm sm:text-base font-medium">Marketing Emails</h3>
                 <p className={`text-xs sm:text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Receive marketing and promotional emails</p>
               </div>
-              <div className="relative inline-block w-10 sm:w-12 h-5 sm:h-6 transition duration-200 ease-in-out rounded-full flex-shrink-0 shadow-sm">
+              <div className="relative inline-block w-10 sm:w-12 h-5 sm:h-6 transition duration-200 ease-in-out rounded-full flex-shrink-0 shadow-sm self-center">
                 <input
                   type="checkbox"
                   id="marketing"
@@ -207,7 +207,7 @@ const Settings = () => {
                   }`}
                 >
                   <span
-                    className={`absolute left-0 w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full shadow ${
+                    className={`absolute top-0 bottom-0 my-auto left-0 w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full shadow ${
                       formData.marketing ? 'translate-x-5 sm:translate-x-6' : 'translate-x-0'
                     }`}
                   />
@@ -215,12 +215,12 @@ const Settings = () => {
               </div>
             </div>
 
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between py-1">
               <div className="pr-4">
                 <h3 className="text-sm sm:text-base font-medium">Product Updates</h3>
                 <p className={`text-xs sm:text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Receive notifications about product updates</p>
               </div>
-              <div className="relative inline-block w-10 sm:w-12 h-5 sm:h-6 transition duration-200 ease-in-out rounded-full flex-shrink-0 shadow-sm">
+              <div className="relative inline-block w-10 sm:w-12 h-5 sm:h-6 transition duration-200 ease-in-out rounded-full flex-shrink-0 shadow-sm self-center">
                 <input
                   type="checkbox"
                   id="updates"
@@ -238,7 +238,7 @@ const Settings = () => {
                   }`}
                 >
                   <span
-                    className={`absolute left-0 w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full shadow ${
+                    className={`absolute top-0 bottom-0 my-auto left-0 w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full shadow ${
                       formData.updates ? 'translate-x-5 sm:translate-x-6' : 'translate-x-0'
                     }`}
                   />
