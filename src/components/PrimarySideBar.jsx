@@ -61,11 +61,11 @@ const PrimarySideBar = () => {
 
   return (
     <aside
-      className={`bg-gray-800 text-white transition-all duration-300 ease-in-out ${isPrimarySidebarOpen ? 'w-64' : 'w-0 md:w-16'} overflow-hidden h-full`}
+      className={`bg-gray-900 text-white transition-all duration-300 ease-in-out ${isPrimarySidebarOpen ? 'w-64' : 'w-0 md:w-16'} overflow-hidden h-full`}
     >
       <div className="h-full flex flex-col">
         {/* Sidebar header */}
-        <div className="p-4 border-b border-gray-700">
+        <div className="p-4 border-b border-gray-800">
           <h2 className={`font-bold text-xl ${isPrimarySidebarOpen ? 'block' : 'hidden md:block text-center'}`}>
             {isPrimarySidebarOpen ? 'Navigation' : ''}
           </h2>
@@ -78,7 +78,7 @@ const PrimarySideBar = () => {
               <li key={item.path}>
                 <Link
                   to={item.path}
-                  className={`flex items-center p-2 rounded-md transition-colors ${isActive(item.path) ? 'bg-blue-600 text-white' : 'text-gray-300 hover:bg-gray-700'}`}
+                  className={`flex items-center p-2 rounded-md transition-colors ${isActive(item.path) ? 'bg-blue-600 text-white' : 'text-gray-300 hover:bg-gray-800'}`}
                 >
                   <span className="inline-flex">{renderIcon(item.icon)}</span>
                   <span className={`ml-3 ${isPrimarySidebarOpen ? 'block' : 'hidden'}`}>{item.label}</span>
@@ -89,9 +89,9 @@ const PrimarySideBar = () => {
         </nav>
 
         {/* Sidebar footer */}
-        <div className="p-4 border-t border-gray-700">
+        <div className="p-4 border-t border-gray-800">
           <div className={`text-sm text-gray-400 ${isPrimarySidebarOpen ? 'block' : 'hidden'}`}>
-            <p>© 2023 Your Company</p>
+            <p>© {new Date().getFullYear()} Your Company</p>
           </div>
         </div>
       </div>
