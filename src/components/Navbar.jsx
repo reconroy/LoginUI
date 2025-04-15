@@ -29,7 +29,7 @@ const Navbar = ({ className = '' }) => {
             {/* Primary sidebar toggle */}
             <button
               onClick={togglePrimarySidebar}
-              className="p-2 rounded-md text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-white"
+              className="p-2 rounded-md text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-white z-50 relative"
               aria-label="Toggle primary sidebar"
             >
               <svg
