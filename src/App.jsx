@@ -13,6 +13,8 @@ import Home from './pages/Home'
 import Dashboard from './pages/Dashboard'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import Reports from './pages/Reports'
+import Settings from './pages/Settings'
 import NotFound from './pages/NotFound'
 
 function App() {
@@ -30,6 +32,8 @@ function App() {
           {/* Protected routes with InnerLayout */}
           <Route element={<ProtectedRoutes />}>
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard/reports" element={<Reports />} />
+            <Route path="/dashboard/settings" element={<Settings />} />
             {/* Add more protected routes here */}
           </Route>
 
