@@ -7,7 +7,7 @@ const OuterLayout = () => {
   const { isDarkMode } = useThemeStore();
 
   return (
-    <div className={`min-h-screen flex items-center justify-center transition-colors duration-300 ${isDarkMode ? 'bg-gray-900' : 'bg-gradient-to-br from-blue-50 to-indigo-100'}`}>
+    <div className={`min-h-screen flex items-center justify-center transition-colors duration-300 ${isDarkMode ? 'bg-gray-900' : 'bg-gradient-to-br from-blue-50 to-indigo-200'}`}>
       {/* Theme toggle button - visible only on large screens */}
       <div className="fixed top-4 right-4 hidden lg:block z-10">
         <ThemeToggle />

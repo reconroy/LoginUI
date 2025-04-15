@@ -51,6 +51,9 @@ const Navbar = ({ className = '' }) => {
 
           {/* Center - Navigation links (hidden on small screens) */}
           <div className="hidden md:flex items-center space-x-4">
+            CUPL | EMS
+          </div>
+          {/* <div className="hidden md:flex items-center space-x-4">
             <Link to="/dashboard" className="px-3 py-2 rounded-md hover:bg-gray-800 transition-colors">
               Home
             </Link>
@@ -60,7 +63,7 @@ const Navbar = ({ className = '' }) => {
             <Link to="/dashboard/settings" className="px-3 py-2 rounded-md hover:bg-gray-800 transition-colors">
               Settings
             </Link>
-          </div>
+          </div> */}
 
           {/* Right side - User menu and secondary sidebar toggle */}
           <div className="flex items-center">
@@ -109,10 +112,9 @@ const Navbar = ({ className = '' }) => {
         </div>
       </div>
 
-      {/* Mobile menu - Only visible on small screens */}
-      <div className="md:hidden border-t border-gray-800">
+      {/* Mobile menu - Only visible on small screens with theme toggle for mobile */}
+      {/* <div className="md:hidden border-t border-gray-800">
         <div className="px-2 pt-2 pb-3 space-y-1">
-          {/* Mobile theme toggle */}
           <div className="flex justify-end mb-2 sm:hidden">
             <ThemeToggle />
           </div>
@@ -126,7 +128,7 @@ const Navbar = ({ className = '' }) => {
             Settings
           </Link>
         </div>
-      </div>
+      </div> */}
     </nav>
   );
 };
