@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../context/AuthContext';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -67,9 +67,9 @@ const Login = () => {
               Password
             </label>
             <div className="text-sm">
-              <Link to="/forgot-password" className="text-blue-600 hover:text-blue-500 font-medium">
+              <a href="#" className="text-blue-600 hover:text-blue-500 font-medium">
                 Forgot password?
-              </Link>
+              </a>
             </div>
           </div>
           <input
