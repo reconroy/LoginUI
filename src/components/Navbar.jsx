@@ -22,18 +22,18 @@ const Navbar = ({ className = '' }) => {
 
   return (
     <nav className={`bg-gray-900 text-white shadow-md ${className}`}>
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+      <div className="container mx-auto px-3 sm:px-4">
+        <div className="flex items-center justify-between h-14 sm:h-16">
           {/* Left side - Logo and sidebar toggle */}
           <div className="flex items-center">
             {/* Primary sidebar toggle */}
             <button
               onClick={togglePrimarySidebar}
-              className="p-2 rounded-md text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-white z-50 relative"
+              className="p-1.5 sm:p-2 rounded-md text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-white z-50 relative"
               aria-label="Toggle primary sidebar"
             >
               <svg
-                className={`h-6 w-6 transition-transform duration-200 ${isPrimarySidebarOpen ? '' : 'transform rotate-180'}`}
+                className={`h-5 w-5 sm:h-6 sm:w-6 transition-transform duration-200 ${isPrimarySidebarOpen ? '' : 'transform rotate-180'}`}
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -44,7 +44,7 @@ const Navbar = ({ className = '' }) => {
             </button>
 
             {/* Logo */}
-            <Link to="/dashboard" className="ml-4 font-bold text-xl">
+            <Link to="/dashboard" className="ml-3 sm:ml-4 font-bold text-lg sm:text-xl">
               Dashboard
             </Link>
           </div>
@@ -54,13 +54,13 @@ const Navbar = ({ className = '' }) => {
             CUPL | EMS
           </div>
           {/* <div className="hidden md:flex items-center space-x-4">
-            <Link to="/dashboard" className="px-3 py-2 rounded-md hover:bg-gray-800 transition-colors">
+            <Link to="/dashboard" className="px-2 sm:px-3 py-1.5 sm:py-2 rounded-md hover:bg-gray-800 transition-colors text-sm sm:text-base">
               Home
             </Link>
-            <Link to="/dashboard/reports" className="px-3 py-2 rounded-md hover:bg-gray-800 transition-colors">
+            <Link to="/dashboard/reports" className="px-2 sm:px-3 py-1.5 sm:py-2 rounded-md hover:bg-gray-800 transition-colors text-sm sm:text-base">
               Reports
             </Link>
-            <Link to="/dashboard/settings" className="px-3 py-2 rounded-md hover:bg-gray-800 transition-colors">
+            <Link to="/dashboard/settings" className="px-2 sm:px-3 py-1.5 sm:py-2 rounded-md hover:bg-gray-800 transition-colors text-sm sm:text-base">
               Settings
             </Link>
           </div> */}
@@ -72,7 +72,7 @@ const Navbar = ({ className = '' }) => {
               <div className="flex items-center">
                 <span className="hidden md:block mr-3">{user?.name || 'User'}</span>
                 <button className="flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-white">
-                  <div className="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center">
+                  <div className="h-7 w-7 sm:h-8 sm:w-8 rounded-full bg-blue-500 flex items-center justify-center text-sm sm:text-base">
                     {user?.name?.charAt(0) || 'U'}
                   </div>
                 </button>
@@ -99,11 +99,11 @@ const Navbar = ({ className = '' }) => {
             {/* Secondary sidebar toggle - only visible on large screens */}
             <button
               onClick={toggleSecondarySidebar}
-              className="ml-4 p-2 rounded-md text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-white hidden lg:block"
+              className="ml-4 p-1.5 sm:p-2 rounded-md text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-white hidden lg:block"
               aria-label="Toggle secondary sidebar"
             >
               <svg
-                className={`h-6 w-6 transition-transform duration-200 ${isSecondarySidebarOpen ? '' : 'transform rotate-180'}`}
+                className={`h-5 w-5 sm:h-6 sm:w-6 transition-transform duration-200 ${isSecondarySidebarOpen ? '' : 'transform rotate-180'}`}
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -122,13 +122,13 @@ const Navbar = ({ className = '' }) => {
           <div className="flex justify-end mb-2 sm:hidden">
             <ThemeToggle />
           </div>
-          <Link to="/dashboard" className="block px-3 py-2 rounded-md hover:bg-gray-800 transition-colors">
+          <Link to="/dashboard" className="block px-3 py-2 rounded-md hover:bg-gray-800 transition-colors text-sm">
             Home
           </Link>
-          <Link to="/dashboard/reports" className="block px-3 py-2 rounded-md hover:bg-gray-800 transition-colors">
+          <Link to="/dashboard/reports" className="block px-3 py-2 rounded-md hover:bg-gray-800 transition-colors text-sm">
             Reports
           </Link>
-          <Link to="/dashboard/settings" className="block px-3 py-2 rounded-md hover:bg-gray-800 transition-colors">
+          <Link to="/dashboard/settings" className="block px-3 py-2 rounded-md hover:bg-gray-800 transition-colors text-sm">
             Settings
           </Link>
         </div>

@@ -31,37 +31,39 @@ const Settings = () => {
 
   return (
     <div className={`${isDarkMode ? 'text-gray-100' : 'text-gray-800'}`}>
-      <h1 className="text-2xl font-bold mb-6">Settings</h1>
+      <h1 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Settings</h1>
 
-      <div className="space-y-8">
+      <div className="space-y-6 sm:space-y-8">
         {/* Theme Settings */}
-        <div className={`${isDarkMode ? 'bg-gray-800 border border-gray-700' : 'bg-white'} p-6 rounded-lg shadow-md transition-colors duration-300`}>
-          <h2 className="text-lg font-semibold mb-4">Theme Preferences</h2>
+        <div className={`${isDarkMode ? 'bg-gray-800 border border-gray-700' : 'bg-white'} p-4 sm:p-6 rounded-lg shadow-md transition-colors duration-300`}>
+          <h2 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Theme Preferences</h2>
 
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <h3 className="font-medium">Dark Mode</h3>
-              <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Toggle between light and dark theme</p>
+          <div className="flex items-center justify-between mb-4 sm:mb-6">
+            <div className="pr-4">
+              <h3 className="text-sm sm:text-base font-medium">Dark Mode</h3>
+              <p className={`text-xs sm:text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Toggle between light and dark theme</p>
             </div>
-            <ThemeToggle />
+            <div className="flex-shrink-0">
+              <ThemeToggle />
+            </div>
           </div>
 
-          <div className="border-t my-4 border-gray-200 dark:border-gray-700"></div>
+          <div className="border-t my-3 sm:my-4 border-gray-200 dark:border-gray-700"></div>
 
-          <h2 className="text-lg font-semibold my-4">Layout Preferences</h2>
+          <h2 className="text-base sm:text-lg font-semibold my-3 sm:my-4">Layout Preferences</h2>
 
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <div>
-                <h3 className="font-medium">Primary Sidebar</h3>
-                <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Show or hide the left sidebar</p>
+              <div className="pr-4">
+                <h3 className="text-sm sm:text-base font-medium">Primary Sidebar</h3>
+                <p className={`text-xs sm:text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Show or hide the left sidebar</p>
               </div>
-              <div className="relative inline-block w-12 h-6 transition duration-200 ease-in-out rounded-full">
+              <div className="relative inline-block w-10 sm:w-12 h-5 sm:h-6 transition duration-200 ease-in-out rounded-full flex-shrink-0">
                 <input
                   type="checkbox"
                   id="primary-sidebar"
                   name="primary-sidebar"
-                  className="absolute w-6 h-6 opacity-0"
+                  className="absolute w-5 sm:w-6 h-5 sm:h-6 opacity-0"
                   checked={isPrimarySidebarOpen}
                   onChange={() => setPrimarySidebar(!isPrimarySidebarOpen)}
                 />
@@ -74,8 +76,8 @@ const Settings = () => {
                   }`}
                 >
                   <span
-                    className={`absolute left-0 w-6 h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full ${
-                      isPrimarySidebarOpen ? 'translate-x-6' : 'translate-x-0'
+                    className={`absolute left-0 w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full ${
+                      isPrimarySidebarOpen ? 'translate-x-5 sm:translate-x-6' : 'translate-x-0'
                     }`}
                   />
                 </label>
@@ -83,16 +85,16 @@ const Settings = () => {
             </div>
 
             <div className="flex items-center justify-between lg:block hidden">
-              <div>
-                <h3 className="font-medium">Secondary Sidebar</h3>
-                <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Show or hide the right sidebar</p>
+              <div className="pr-4">
+                <h3 className="text-sm sm:text-base font-medium">Secondary Sidebar</h3>
+                <p className={`text-xs sm:text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Show or hide the right sidebar</p>
               </div>
-              <div className="relative inline-block w-12 h-6 transition duration-200 ease-in-out rounded-full">
+              <div className="relative inline-block w-10 sm:w-12 h-5 sm:h-6 transition duration-200 ease-in-out rounded-full flex-shrink-0">
                 <input
                   type="checkbox"
                   id="secondary-sidebar"
                   name="secondary-sidebar"
-                  className="absolute w-6 h-6 opacity-0"
+                  className="absolute w-5 sm:w-6 h-5 sm:h-6 opacity-0"
                   checked={isSecondarySidebarOpen}
                   onChange={() => setSecondarySidebar(!isSecondarySidebarOpen)}
                 />
@@ -105,8 +107,8 @@ const Settings = () => {
                   }`}
                 >
                   <span
-                    className={`absolute left-0 w-6 h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full ${
-                      isSecondarySidebarOpen ? 'translate-x-6' : 'translate-x-0'
+                    className={`absolute left-0 w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full ${
+                      isSecondarySidebarOpen ? 'translate-x-5 sm:translate-x-6' : 'translate-x-0'
                     }`}
                   />
                 </label>
@@ -123,7 +125,7 @@ const Settings = () => {
                   type="checkbox"
                   id="footer-visibility"
                   name="footer-visibility"
-                  className="absolute w-6 h-6 opacity-0"
+                  className="absolute w-5 sm:w-6 h-5 sm:h-6 opacity-0"
                   checked={isFooterVisible}
                   onChange={() => setFooterVisibility(!isFooterVisible)}
                 />
@@ -136,8 +138,8 @@ const Settings = () => {
                   }`}
                 >
                   <span
-                    className={`absolute left-0 w-6 h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full ${
-                      isFooterVisible ? 'translate-x-6' : 'translate-x-0'
+                    className={`absolute left-0 w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full ${
+                      isFooterVisible ? 'translate-x-5 sm:translate-x-6' : 'translate-x-0'
                     }`}
                   />
                 </label>
@@ -147,21 +149,21 @@ const Settings = () => {
         </div>
 
         {/* Notification Settings */}
-        <div className={`${isDarkMode ? 'bg-gray-800 border border-gray-700' : 'bg-white'} p-6 rounded-lg shadow-md transition-colors duration-300`}>
-          <h2 className="text-lg font-semibold mb-4">Notification Preferences</h2>
+        <div className={`${isDarkMode ? 'bg-gray-800 border border-gray-700' : 'bg-white'} p-4 sm:p-6 rounded-lg shadow-md transition-colors duration-300`}>
+          <h2 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Notification Preferences</h2>
 
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <div>
-                <h3 className="font-medium">Email Notifications</h3>
-                <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Receive notifications via email</p>
+              <div className="pr-4">
+                <h3 className="text-sm sm:text-base font-medium">Email Notifications</h3>
+                <p className={`text-xs sm:text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Receive notifications via email</p>
               </div>
-              <div className="relative inline-block w-12 h-6 transition duration-200 ease-in-out rounded-full">
+              <div className="relative inline-block w-10 sm:w-12 h-5 sm:h-6 transition duration-200 ease-in-out rounded-full flex-shrink-0">
                 <input
                   type="checkbox"
                   id="notifications"
                   name="notifications"
-                  className="absolute w-6 h-6 opacity-0"
+                  className="absolute w-5 sm:w-6 h-5 sm:h-6 opacity-0"
                   checked={formData.notifications}
                   onChange={handleToggleChange}
                 />
@@ -174,8 +176,8 @@ const Settings = () => {
                   }`}
                 >
                   <span
-                    className={`absolute left-0 w-6 h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full ${
-                      formData.notifications ? 'translate-x-6' : 'translate-x-0'
+                    className={`absolute left-0 w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full ${
+                      formData.notifications ? 'translate-x-5 sm:translate-x-6' : 'translate-x-0'
                     }`}
                   />
                 </label>
@@ -183,16 +185,16 @@ const Settings = () => {
             </div>
 
             <div className="flex items-center justify-between">
-              <div>
-                <h3 className="font-medium">Marketing Emails</h3>
-                <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Receive marketing and promotional emails</p>
+              <div className="pr-4">
+                <h3 className="text-sm sm:text-base font-medium">Marketing Emails</h3>
+                <p className={`text-xs sm:text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Receive marketing and promotional emails</p>
               </div>
-              <div className="relative inline-block w-12 h-6 transition duration-200 ease-in-out rounded-full">
+              <div className="relative inline-block w-10 sm:w-12 h-5 sm:h-6 transition duration-200 ease-in-out rounded-full flex-shrink-0">
                 <input
                   type="checkbox"
                   id="marketing"
                   name="marketing"
-                  className="absolute w-6 h-6 opacity-0"
+                  className="absolute w-5 sm:w-6 h-5 sm:h-6 opacity-0"
                   checked={formData.marketing}
                   onChange={handleToggleChange}
                 />
@@ -205,8 +207,8 @@ const Settings = () => {
                   }`}
                 >
                   <span
-                    className={`absolute left-0 w-6 h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full ${
-                      formData.marketing ? 'translate-x-6' : 'translate-x-0'
+                    className={`absolute left-0 w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full ${
+                      formData.marketing ? 'translate-x-5 sm:translate-x-6' : 'translate-x-0'
                     }`}
                   />
                 </label>
@@ -214,16 +216,16 @@ const Settings = () => {
             </div>
 
             <div className="flex items-center justify-between">
-              <div>
-                <h3 className="font-medium">Product Updates</h3>
-                <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Receive notifications about product updates</p>
+              <div className="pr-4">
+                <h3 className="text-sm sm:text-base font-medium">Product Updates</h3>
+                <p className={`text-xs sm:text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Receive notifications about product updates</p>
               </div>
-              <div className="relative inline-block w-12 h-6 transition duration-200 ease-in-out rounded-full">
+              <div className="relative inline-block w-10 sm:w-12 h-5 sm:h-6 transition duration-200 ease-in-out rounded-full flex-shrink-0">
                 <input
                   type="checkbox"
                   id="updates"
                   name="updates"
-                  className="absolute w-6 h-6 opacity-0"
+                  className="absolute w-5 sm:w-6 h-5 sm:h-6 opacity-0"
                   checked={formData.updates}
                   onChange={handleToggleChange}
                 />
@@ -236,8 +238,8 @@ const Settings = () => {
                   }`}
                 >
                   <span
-                    className={`absolute left-0 w-6 h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full ${
-                      formData.updates ? 'translate-x-6' : 'translate-x-0'
+                    className={`absolute left-0 w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200 ease-in-out transform bg-white rounded-full ${
+                      formData.updates ? 'translate-x-5 sm:translate-x-6' : 'translate-x-0'
                     }`}
                   />
                 </label>
@@ -248,7 +250,7 @@ const Settings = () => {
 
         {/* Save Button */}
         <div className="flex justify-end">
-          <button className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors">
+          <button className="bg-blue-600 text-white px-4 sm:px-6 py-1.5 sm:py-2 text-sm sm:text-base rounded-md hover:bg-blue-700 transition-colors">
             Save Settings
           </button>
         </div>
