@@ -17,6 +17,8 @@ import NotFound from './pages/NotFound'
 import Login from './pages/auth/Login.jsx'
 import Register from './pages/auth/Register.jsx'
 import ForgotPassword from './pages/auth/ForgotPassword.jsx'
+import AuthSuccess from './pages/auth/AuthSuccess.jsx'
+import AuthFailed from './pages/auth/AuthFailed.jsx'
 
 // Dashboard Pages
 import Dashboard from './pages/dashboard/Dashboard.jsx'
@@ -35,6 +37,8 @@ function App() {
               <Route path="login" element={<Login />} />
               <Route path="register" element={<Register />} />
               <Route path="forgot-password" element={<ForgotPassword />} />
+              <Route path="auth-success" element={<AuthSuccess />} />
+              <Route path="auth-failed" element={<AuthFailed />} />
             </Route>
 
             {/* Protected routes with InnerLayout */}

@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, Link, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useThemeStore } from '../../store';
+import API from '../../services/API';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -11,6 +12,7 @@ const Login = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
   const { isDarkMode } = useThemeStore();
+  const [searchParams] = useSearchParams();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -49,10 +51,71 @@ const Login = () => {
     }
   };
 
+  // Handle Google OAuth callback
+  useEffect(() => {
+    const code = searchParams.get('code');
+    if (code) {
+      handleGoogleCallback(code);
+    }
+
+    const error = searchParams.get('error');
+    if (error) {
+      setError('Google sign-in was cancelled or failed');
+    }
+  }, [searchParams]);
+
+  const handleGoogleCallback = async (code) => {
+    setIsLoading(true);
+    try {
+      const response = await API.auth.handleGoogleCallback(code);
+
+      if (response.user) {
+        // Login the user with the returned data
+        login({
+          id: response.user.id,
+          name: response.user.name,
+          email: response.user.email,
+          role: response.user.role,
+          token: response.token // Make sure your backend returns a token
+        });
+
+        // Clear the auth redirect
+        localStorage.removeItem('authRedirect');
+
+        // Redirect to dashboard
+        navigate('/dashboard');
+      }
+    } catch (err) {
+      console.error('Google callback error:', err);
+      setError(
+        err.response?.data?.message || 'Failed to complete Google sign-in'
+      );
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleGoogleLogin = () => {
+    try {
+      const { url } = API.auth.initGoogleAuth();
+      // Store the current page for redirect after auth
+      localStorage.setItem('authRedirect', 'login');
+      // Redirect to Google OAuth
+      window.location.href = url;
+    } catch (err) {
+      setError('Failed to initialize Google sign-in');
+    }
+  };
+
   const handleSocialLogin = (provider) => {
+    if (provider === 'Google') {
+      handleGoogleLogin();
+      return;
+    }
+
     setIsLoading(true);
 
-    // Simulate social login
+    // Simulate social login for other providers
     setTimeout(() => {
       const userData = {
         id: 2,

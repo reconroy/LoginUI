@@ -45,19 +45,26 @@ const API = {
     // Initialize Google OAuth
     initGoogleAuth: () => {
       const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
-      const redirectUri = encodeURIComponent(import.meta.env.VITE_GOOGLE_REDIRECT_URI);
+      const redirectUri = import.meta.env.VITE_GOOGLE_REDIRECT_URI;
       
-      const scope = encodeURIComponent('email profile');
-      const responseType = 'code';
-      const accessType = 'offline';
-      const prompt = 'consent';
+      // Update scope format to match Google's expected format
+      const scopes = [
+        'openid',
+        'https://www.googleapis.com/auth/userinfo.email',
+        'https://www.googleapis.com/auth/userinfo.profile'
+      ].join(' ');
 
-      const url = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=${scope}&access_type=${accessType}&prompt=${prompt}`;
+      const url = `https://accounts.google.com/o/oauth2/v2/auth?` +
+        `client_id=${encodeURIComponent(clientId)}` +
+        `&redirect_uri=${encodeURIComponent(redirectUri)}` +
+        `&response_type=code` +
+        `&scope=${encodeURIComponent(scopes)}` +
+        `&access_type=offline` +
+        `&prompt=consent`;
       
       return { url };
     },
 
-    // Handle Google OAuth callback
     handleGoogleCallback: (code) => 
       instance.post('/auth/google/callback', { 
         code,
