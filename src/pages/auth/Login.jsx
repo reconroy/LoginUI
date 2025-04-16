@@ -1,38 +1,69 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import { useThemeStore } from '../../store';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { login } = useAuth();
+  const { isDarkMode } = useThemeStore();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    setIsLoading(true);
 
     // Simple validation
     if (!email || !password) {
       setError('Please enter both email and password');
+      setIsLoading(false);
       return;
     }
 
-    // For demo purposes, we'll accept any credentials
-    // In a real app, you would validate against a backend
-    const userData = {
-      id: 1,
-      name: 'Demo User',
-      email: email,
-      role: 'admin'
-    };
+    try {
+      // Simulate API call with a delay
+      await new Promise(resolve => setTimeout(resolve, 800));
 
-    // Call the login function from auth context
-    login(userData);
+      // For demo purposes, we'll accept any credentials
+      // In a real app, you would validate against a backend
+      const userData = {
+        id: 1,
+        name: 'Demo User',
+        email: email,
+        role: 'admin'
+      };
 
-    // Redirect to dashboard
-    navigate('/dashboard');
+      // Call the login function from auth context
+      login(userData);
+
+      // Redirect to dashboard
+      navigate('/dashboard');
+    } catch (err) {
+      setError('An error occurred during login. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleSocialLogin = (provider) => {
+    setIsLoading(true);
+
+    // Simulate social login
+    setTimeout(() => {
+      const userData = {
+        id: 2,
+        name: `${provider} User`,
+        email: `user@${provider.toLowerCase()}.com`,
+        role: 'user'
+      };
+
+      login(userData);
+      navigate('/dashboard');
+    }, 1000);
   };
 
   return (
@@ -42,7 +73,7 @@ const Login = () => {
       </h1>
 
       {error && (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+        <div className={`${isDarkMode ? 'bg-red-900/50 border-red-800 text-red-200' : 'bg-red-100 border-red-400 text-red-700'} border px-4 py-3 rounded-md mb-4 animate-shake`}>
           {error}
         </div>
       )}
@@ -71,13 +102,13 @@ const Login = () => {
           </div>
         </div>
 
-        <div>
+        <div className="group">
           <div className="flex items-center justify-between mb-1">
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="password" className={`block text-sm font-medium ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
               Password
             </label>
             <div className="text-sm">
-              <Link to="/forgot-password" className="text-blue-600 hover:text-blue-500 font-medium">
+              <Link to="/forgot-password" className={`font-medium ${isDarkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-500'}`}>
                 Forgot password?
               </Link>
             </div>
@@ -105,9 +136,9 @@ const Login = () => {
             id="remember-me"
             name="remember-me"
             type="checkbox"
-            className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+            className={`h-4 w-4 ${isDarkMode ? 'bg-gray-700 border-gray-600 text-blue-400 focus:ring-blue-400' : 'text-blue-600 focus:ring-blue-500 border-gray-300'} rounded transition-colors duration-200`}
           />
-          <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700">
+          <label htmlFor="remember-me" className={`ml-2 block text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
             Remember me
           </label>
         </div>
@@ -118,7 +149,15 @@ const Login = () => {
             disabled={isLoading}
             className={`w-full flex justify-center items-center py-2 sm:py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white ${isLoading ? 'bg-blue-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'} focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200`}
           >
-            Sign in
+            {isLoading ? (
+              <>
+                <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Signing in...
+              </>
+            ) : 'Sign in'}
           </button>
         </div>
       </form>
@@ -166,7 +205,7 @@ const Login = () => {
       <div className="mt-6 text-center">
         <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
           Don't have an account?{' '}
-          <Link to="/register" className="text-blue-600 hover:text-blue-500 font-medium">
+          <Link to="/register" className={`font-medium ${isDarkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-500'}`}>
             Sign up now
           </Link>
         </p>
