@@ -42,7 +42,6 @@ function App() {
               <Route index element={<Dashboard />} />
               <Route path="reports" element={<Reports />} />
               <Route path="settings" element={<Settings />} />
-              {/* Add more protected routes here */}
             </Route>
 
             {/* 404 route */}
@@ -51,7 +50,7 @@ function App() {
         </Router>
       </AuthProvider>
     </ThemeProvider>
-  )
+  );
 }
 
 export default App

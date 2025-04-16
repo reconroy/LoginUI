@@ -27,7 +27,6 @@ instance.interceptors.response.use(
   (response) => response.data,
   (error) => {
     if (error.response?.status === 401) {
-      // Handle unauthorized access
       localStorage.removeItem('token');
       window.location.href = '/login';
     }
@@ -41,6 +40,30 @@ const API = {
   put: (url, data = {}, config = {}) => instance.put(url, data, config),
   delete: (url, config = {}) => instance.delete(url, config),
   patch: (url, data = {}, config = {}) => instance.patch(url, data, config),
+
+  auth: {
+    // Initialize Google OAuth
+    initGoogleAuth: () => {
+      const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+      const redirectUri = encodeURIComponent(import.meta.env.VITE_GOOGLE_REDIRECT_URI);
+      
+      const scope = encodeURIComponent('email profile');
+      const responseType = 'code';
+      const accessType = 'offline';
+      const prompt = 'consent';
+
+      const url = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=${scope}&access_type=${accessType}&prompt=${prompt}`;
+      
+      return { url };
+    },
+
+    // Handle Google OAuth callback
+    handleGoogleCallback: (code) => 
+      instance.post('/auth/google/callback', { 
+        code,
+        redirectUri: import.meta.env.VITE_GOOGLE_REDIRECT_URI
+      }),
+  }
 };
 
-export default API
+export default API;
