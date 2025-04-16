@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useSidebarStore } from '../store';
 
 const PrimarySideBar = () => {
-  const { isPrimarySidebarOpen } = useSidebarStore();
+  const { isPrimarySidebarOpen, isFooterVisible } = useSidebarStore();
   const location = useLocation();
 
   // Navigation items
@@ -17,6 +17,11 @@ const PrimarySideBar = () => {
 
   // Function to check if a path is active
   const isActive = (path) => {
+    // Exact match for dashboard home
+    if (path === '/dashboard') {
+      return location.pathname === '/dashboard';
+    }
+    // For other routes, check if the current path matches or is a sub-path
     return location.pathname === path || location.pathname.startsWith(`${path}/`);
   };
 
@@ -61,11 +66,11 @@ const PrimarySideBar = () => {
 
   return (
     <aside
-      className={`bg-gray-800 text-white transition-all duration-300 ease-in-out ${isPrimarySidebarOpen ? 'w-64' : 'w-0 md:w-16'} overflow-hidden h-full`}
+      className={`bg-gray-900 text-white transition-all duration-300 ease-in-out ${isPrimarySidebarOpen ? 'w-64' : 'w-0 md:w-16'} overflow-hidden h-full fixed md:static z-50 top-16 md:top-0 left-0 bottom-0`}
     >
       <div className="h-full flex flex-col">
         {/* Sidebar header */}
-        <div className="p-4 border-b border-gray-700">
+        <div className="p-4 border-b border-gray-800">
           <h2 className={`font-bold text-xl ${isPrimarySidebarOpen ? 'block' : 'hidden md:block text-center'}`}>
             {isPrimarySidebarOpen ? 'Navigation' : ''}
           </h2>
@@ -78,7 +83,7 @@ const PrimarySideBar = () => {
               <li key={item.path}>
                 <Link
                   to={item.path}
-                  className={`flex items-center p-2 rounded-md transition-colors ${isActive(item.path) ? 'bg-blue-600 text-white' : 'text-gray-300 hover:bg-gray-700'}`}
+                  className={`flex items-center p-2 rounded-md transition-colors ${isActive(item.path) ? 'bg-blue-600 text-white' : 'text-gray-300 hover:bg-gray-800'}`}
                 >
                   <span className="inline-flex">{renderIcon(item.icon)}</span>
                   <span className={`ml-3 ${isPrimarySidebarOpen ? 'block' : 'hidden'}`}>{item.label}</span>
@@ -88,12 +93,14 @@ const PrimarySideBar = () => {
           </ul>
         </nav>
 
-        {/* Sidebar footer */}
-        <div className="p-4 border-t border-gray-700">
-          <div className={`text-sm text-gray-400 ${isPrimarySidebarOpen ? 'block' : 'hidden'}`}>
-            <p>© 2023 Your Company</p>
+        {/* Sidebar footer - only shown when main footer is hidden */}
+        {!isFooterVisible && (
+          <div className="p-4 border-t border-gray-800">
+            <div className={`text-sm text-gray-400 ${isPrimarySidebarOpen ? 'block' : 'hidden'}`}>
+              <p>© {new Date().getFullYear()} Your Company</p>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </aside>
   );

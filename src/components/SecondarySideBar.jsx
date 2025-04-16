@@ -1,8 +1,9 @@
 import React from 'react';
-import { useSidebarStore } from '../store';
+import { useSidebarStore, useThemeStore } from '../store';
 
 const SecondarySideBar = () => {
   const { isSecondarySidebarOpen } = useSidebarStore();
+  const { isDarkMode } = useThemeStore();
 
   // Sample data for notifications
   const notifications = [
@@ -53,49 +54,49 @@ const SecondarySideBar = () => {
 
   return (
     <aside
-      className={`bg-gray-50 border-l border-gray-200 transition-all duration-300 ease-in-out ${isSecondarySidebarOpen ? 'w-80' : 'w-0'} overflow-hidden h-full`}
+      className={`${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-gray-50 border-gray-200'} border-l transition-all duration-300 ease-in-out ${isSecondarySidebarOpen ? 'lg:w-80' : 'w-0'} overflow-hidden h-full hidden lg:block`}
     >
       <div className="h-full flex flex-col">
         {/* Sidebar header */}
-        <div className="p-4 border-b border-gray-200">
-          <h2 className="font-bold text-xl text-gray-800">Activity</h2>
+        <div className={`p-4 border-b ${isDarkMode ? 'border-gray-700' : 'border-gray-200'}`}>
+          <h2 className={`font-bold text-xl ${isDarkMode ? 'text-gray-100' : 'text-gray-800'}`}>Activity</h2>
         </div>
 
         {/* Notifications section */}
-        <div className="p-4 border-b border-gray-200">
-          <h3 className="font-semibold text-gray-700 mb-3">Notifications</h3>
+        <div className={`p-4 border-b ${isDarkMode ? 'border-gray-700' : 'border-gray-200'}`}>
+          <h3 className={`font-semibold mb-3 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Notifications</h3>
           <div className="space-y-3">
             {notifications.map((notification) => (
               <div key={notification.id} className="flex items-start space-x-3">
                 {renderNotificationIcon(notification.type)}
                 <div>
-                  <p className="text-sm text-gray-800">{notification.message}</p>
-                  <p className="text-xs text-gray-500">{notification.time}</p>
+                  <p className={`text-sm ${isDarkMode ? 'text-gray-200' : 'text-gray-800'}`}>{notification.message}</p>
+                  <p className={`text-xs ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>{notification.time}</p>
                 </div>
               </div>
             ))}
           </div>
-          <button className="mt-3 text-sm text-blue-600 hover:text-blue-800 font-medium">
+          <button className={`mt-3 text-sm font-medium ${isDarkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-800'}`}>
             View all notifications
           </button>
         </div>
 
         {/* Recent activity section */}
         <div className="p-4 flex-1 overflow-y-auto">
-          <h3 className="font-semibold text-gray-700 mb-3">Recent Activity</h3>
+          <h3 className={`font-semibold mb-3 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Recent Activity</h3>
           <div className="space-y-4">
             {activities.map((activity) => (
-              <div key={activity.id} className="border-l-2 border-gray-200 pl-3 py-1">
-                <p className="text-sm font-medium text-gray-800">{activity.user}</p>
-                <p className="text-sm text-gray-600">{activity.action}</p>
-                <p className="text-xs text-gray-500">{activity.time}</p>
+              <div key={activity.id} className={`border-l-2 ${isDarkMode ? 'border-gray-600' : 'border-gray-200'} pl-3 py-1`}>
+                <p className={`text-sm font-medium ${isDarkMode ? 'text-gray-200' : 'text-gray-800'}`}>{activity.user}</p>
+                <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>{activity.action}</p>
+                <p className={`text-xs ${isDarkMode ? 'text-gray-500' : 'text-gray-500'}`}>{activity.time}</p>
               </div>
             ))}
           </div>
         </div>
 
         {/* Sidebar footer */}
-        <div className="p-4 border-t border-gray-200">
+        <div className={`p-4 border-t ${isDarkMode ? 'border-gray-700' : 'border-gray-200'}`}>
           <button className="w-full py-2 px-4 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
             Clear All
           </button>

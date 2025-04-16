@@ -58,18 +58,20 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold mb-6 text-center text-gray-800">Create an Account</h1>
-      
+    <div className="relative z-20 w-full max-w-md mx-auto">
+      <h1 className={`text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
+        <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600">Create an Account</span>
+      </h1>
+
       {error && (
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
           {error}
         </div>
       )}
-      
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+
+      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+        <div className="group">
+          <label htmlFor="name" className={`block text-sm font-medium mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
             Full Name
           </label>
           <input

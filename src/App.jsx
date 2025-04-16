@@ -29,24 +29,24 @@ function App() {
       <AuthProvider>
         <Router>
           <Routes>
-          {/* Public routes with OuterLayout */}
-          <Route element={<OuterLayout />}>
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/forgot-password" element={<ForgotPassword />} />
-            <Route path="/" element={<Home />} />
-          </Route>
+            {/* Public routes with OuterLayout */}
+            <Route path="/" element={<OuterLayout />}>
+              <Route index element={<Home />} />
+              <Route path="login" element={<Login />} />
+              <Route path="register" element={<Register />} />
+              <Route path="forgot-password" element={<ForgotPassword />} />
+            </Route>
 
-          {/* Protected routes with InnerLayout */}
-          <Route element={<ProtectedRoutes />}>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/dashboard/reports" element={<Reports />} />
-            <Route path="/dashboard/settings" element={<Settings />} />
-            {/* Add more protected routes here */}
-          </Route>
+            {/* Protected routes with InnerLayout */}
+            <Route path="/dashboard" element={<ProtectedRoutes />}>
+              <Route index element={<Dashboard />} />
+              <Route path="reports" element={<Reports />} />
+              <Route path="settings" element={<Settings />} />
+              {/* Add more protected routes here */}
+            </Route>
 
-          {/* 404 route */}
-          <Route path="*" element={<NotFound />} />
+            {/* 404 route */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Router>
       </AuthProvider>

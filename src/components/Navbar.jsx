@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useSidebarStore } from '../store';
+import ThemeToggle from './common/ThemeToggle';
 
 const Navbar = ({ className = '' }) => {
   const { user, logout } = useAuth();
@@ -12,6 +13,7 @@ const Navbar = ({ className = '' }) => {
     togglePrimarySidebar,
     toggleSecondarySidebar
   } = useSidebarStore();
+  // We're not using isDarkMode here as the navbar is permanently dark
 
   const handleLogout = () => {
     logout();
@@ -19,19 +21,19 @@ const Navbar = ({ className = '' }) => {
   };
 
   return (
-    <nav className={`bg-blue-600 text-white shadow-md ${className}`}>
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+    <nav className={`bg-gray-900 text-white shadow-md ${className}`}>
+      <div className="container mx-auto px-3 sm:px-4">
+        <div className="flex items-center justify-between h-14 sm:h-16">
           {/* Left side - Logo and sidebar toggle */}
           <div className="flex items-center">
             {/* Primary sidebar toggle */}
             <button
               onClick={togglePrimarySidebar}
-              className="p-2 rounded-md text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-white"
+              className="p-1.5 sm:p-2 rounded-md text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-white z-50 relative"
               aria-label="Toggle primary sidebar"
             >
               <svg
-                className={`h-6 w-6 transition-transform duration-200 ${isPrimarySidebarOpen ? '' : 'transform rotate-180'}`}
+                className={`h-5 w-5 sm:h-6 sm:w-6 transition-transform duration-200 ${isPrimarySidebarOpen ? '' : 'transform rotate-180'}`}
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -42,23 +44,26 @@ const Navbar = ({ className = '' }) => {
             </button>
 
             {/* Logo */}
-            <Link to="/dashboard" className="ml-4 font-bold text-xl">
+            <Link to="/dashboard" className="ml-3 sm:ml-4 font-bold text-lg sm:text-xl">
               Dashboard
             </Link>
           </div>
 
           {/* Center - Navigation links (hidden on small screens) */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link to="/dashboard" className="px-3 py-2 rounded-md hover:bg-blue-700 transition-colors">
+            CUPL | EMS
+          </div>
+          {/* <div className="hidden md:flex items-center space-x-4">
+            <Link to="/dashboard" className="px-2 sm:px-3 py-1.5 sm:py-2 rounded-md hover:bg-gray-800 transition-colors text-sm sm:text-base">
               Home
             </Link>
-            <Link to="/dashboard/reports" className="px-3 py-2 rounded-md hover:bg-blue-700 transition-colors">
+            <Link to="/dashboard/reports" className="px-2 sm:px-3 py-1.5 sm:py-2 rounded-md hover:bg-gray-800 transition-colors text-sm sm:text-base">
               Reports
             </Link>
-            <Link to="/dashboard/settings" className="px-3 py-2 rounded-md hover:bg-blue-700 transition-colors">
+            <Link to="/dashboard/settings" className="px-2 sm:px-3 py-1.5 sm:py-2 rounded-md hover:bg-gray-800 transition-colors text-sm sm:text-base">
               Settings
             </Link>
-          </div>
+          </div> */}
 
           {/* Right side - User menu and secondary sidebar toggle */}
           <div className="flex items-center">
@@ -67,55 +72,67 @@ const Navbar = ({ className = '' }) => {
               <div className="flex items-center">
                 <span className="hidden md:block mr-3">{user?.name || 'User'}</span>
                 <button className="flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-white">
-                  <div className="h-8 w-8 rounded-full bg-blue-400 flex items-center justify-center">
+                  <div className="h-7 w-7 sm:h-8 sm:w-8 rounded-full bg-blue-500 flex items-center justify-center text-sm sm:text-base">
                     {user?.name?.charAt(0) || 'U'}
                   </div>
                 </button>
               </div>
             </div>
 
-            {/* Logout button */}
+            {/* Logout button with icon */}
             <button
               onClick={handleLogout}
-              className="ml-4 px-3 py-2 rounded-md hover:bg-blue-700 transition-colors"
+              className="ml-4 p-2 rounded-md hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-white"
+              aria-label="Logout"
+              title="Logout"
             >
-              Logout
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+              </svg>
             </button>
 
-            {/* Secondary sidebar toggle */}
+            {/* Theme toggle */}
+            <div className="ml-4 hidden sm:block">
+              <ThemeToggle />
+            </div>
+
+            {/* Secondary sidebar toggle - only visible on large screens */}
             <button
               onClick={toggleSecondarySidebar}
-              className="ml-4 p-2 rounded-md text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-white"
+              className="ml-4 p-1.5 sm:p-2 rounded-md text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-white hidden lg:block"
               aria-label="Toggle secondary sidebar"
             >
               <svg
-                className={`h-6 w-6 transition-transform duration-200 ${isSecondarySidebarOpen ? '' : 'transform rotate-180'}`}
+                className={`h-5 w-5 sm:h-6 sm:w-6 transition-colors duration-200 ${isSecondarySidebarOpen ? 'text-blue-400' : 'text-white'}`}
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h8m-8 6h16" />
               </svg>
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile menu - Only visible on small screens */}
-      <div className="md:hidden border-t border-blue-700">
+      {/* Mobile menu - Only visible on small screens with theme toggle for mobile */}
+      {/* <div className="md:hidden border-t border-gray-800">
         <div className="px-2 pt-2 pb-3 space-y-1">
-          <Link to="/dashboard" className="block px-3 py-2 rounded-md hover:bg-blue-700 transition-colors">
+          <div className="flex justify-end mb-2 sm:hidden">
+            <ThemeToggle />
+          </div>
+          <Link to="/dashboard" className="block px-3 py-2 rounded-md hover:bg-gray-800 transition-colors text-sm">
             Home
           </Link>
-          <Link to="/dashboard/reports" className="block px-3 py-2 rounded-md hover:bg-blue-700 transition-colors">
+          <Link to="/dashboard/reports" className="block px-3 py-2 rounded-md hover:bg-gray-800 transition-colors text-sm">
             Reports
           </Link>
-          <Link to="/dashboard/settings" className="block px-3 py-2 rounded-md hover:bg-blue-700 transition-colors">
+          <Link to="/dashboard/settings" className="block px-3 py-2 rounded-md hover:bg-gray-800 transition-colors text-sm">
             Settings
           </Link>
         </div>
-      </div>
+      </div> */}
     </nav>
   );
 };
