@@ -8,7 +8,8 @@ const Register = () => {
     name: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    gender: 'male' // Default to male
   });
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -58,6 +59,7 @@ const Register = () => {
         id: 1,
         name: formData.name,
         email: formData.email,
+        gender: formData.gender,
         role: 'user'
       };
 
@@ -82,6 +84,7 @@ const Register = () => {
         id: 2,
         name: `${provider} User`,
         email: `user@${provider.toLowerCase()}.com`,
+        gender: formData.gender, // Include the selected gender
         role: 'user'
       };
 
@@ -196,6 +199,42 @@ const Register = () => {
               placeholder="••••••••"
               required
             />
+          </div>
+        </div>
+
+        <div className="group">
+          <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+            Gender
+          </label>
+          <div className="flex space-x-4">
+            <div className="flex items-center">
+              <input
+                id="male"
+                name="gender"
+                type="radio"
+                value="male"
+                checked={formData.gender === 'male'}
+                onChange={handleChange}
+                className={`h-4 w-4 ${isDarkMode ? 'bg-gray-700 border-gray-600 text-blue-400 focus:ring-blue-400' : 'text-blue-600 focus:ring-blue-500 border-gray-300'} rounded-full transition-colors duration-200`}
+              />
+              <label htmlFor="male" className={`ml-2 block text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                Male
+              </label>
+            </div>
+            <div className="flex items-center">
+              <input
+                id="female"
+                name="gender"
+                type="radio"
+                value="female"
+                checked={formData.gender === 'female'}
+                onChange={handleChange}
+                className={`h-4 w-4 ${isDarkMode ? 'bg-gray-700 border-gray-600 text-blue-400 focus:ring-blue-400' : 'text-blue-600 focus:ring-blue-500 border-gray-300'} rounded-full transition-colors duration-200`}
+              />
+              <label htmlFor="female" className={`ml-2 block text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                Female
+              </label>
+            </div>
           </div>
         </div>
 
